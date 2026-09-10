@@ -1,5 +1,8 @@
 FROM mcr.microsoft.com/devcontainers/python:3.12
 
+# Build-Argument für das gewünschte Datum definieren (z. B. 2026-06-01)
+ARG BUILD_DATE=latest
+
 # System-Abhängigkeiten aktualisieren (für Grafik-Bibliotheken etc.)
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends \
@@ -7,13 +10,15 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     libglib2.0-0
 
 # Default-Pakete UND ipykernel (für Jupyter Notebooks) installieren
+# Hinweis: Für exakte Reproduzierbarkeit sollten hier idealerweise auch Versionen fixiert werden (z.B. pandas==2.2.0)
 RUN pip install --no-cache-dir pandas numpy matplotlib ipykernel
 
 # Den Jupyter Kernel für das System registrieren
 RUN python -m ipykernel install --user --name=python3 --display-name="Python 3.12 (DevContainer)"
 
-# Kopiert die requirements.txt aus dem Unterordner in den Container
-COPY docker/requirements.txt /tmp/requirements.txt
+# Kopiert die datumsabhängige requirements-Datei (z. B. requirements-2026-06-01.txt)
+# Wenn 'latest' übergeben wird, greift es auf eine Standard-requirements.txt zu
+COPY docker/requirements-${BUILD_DATE}.txt /tmp/requirements.txt
 
 # Installiert zusätzliche Pakete aus der requirements.txt (falls vorhanden)
 RUN if [ -s /tmp/requirements.txt ]; then \
