@@ -3,6 +3,8 @@ Dies ist ein Standart Python Container. Im Unterordner docker befindet sich der 
 schnell eine reproduzierbare Python umgebung erzeugen.
 WICHTIG bei neuen Projekt muss im Docker File BUILD_DATE nutzt das aktuellen Datum (laterst). 
 Dieses muss bei einem neuen Projekt entsprechend dem derzeitigen Datum angepasst werden YYYY-MM-DD
+Wichtig nur die Packet in requiremnt.txt können per Version festgelegt werden.
+Von den Default Packeten pandas numpy matplotlib ipykernel werden die aktuellesten Versionen geladen. 
 Damit kann auch in Zukunft eine Kompatibilität gewährleistet werden.
 Weiterhin sollte der Container einen spezifischen Namen erhalten dies geschieht .devcontainer/devcontainer.json
 In Test befindet sich der iris.csv Datensatz sowie ein Script, welches zum testen der default Packete pandas numpy matplotlib ipykernel dient.
@@ -20,6 +22,8 @@ This is a standard Python container. The Dockerfile is located in the ‘docker�
 by simply copying and pasting.
 IMPORTANT: For new projects, the `BUILD_DATE` in the Dockerfile must use the current date (latest).
 For a new project, this must be updated to reflect the current date in the format YYYY-MM-DD
+It is important to note that the packages listed in `requirements.txt` can be specified by version.
+The latest versions of the default packages – pandas, numpy, matplotlib and ipykernel – are loaded.
 This ensures compatibility in the future.
 Furthermore, the container should be given a specific name; this is done in `.devcontainer/devcontainer.json`.
 The `test` folder contains the `iris.csv` dataset and a script used to test the default packages: pandas, numpy, matplotlib and ipykernel.
