@@ -8,6 +8,12 @@ Weiterhin sollte der Container einen spezifischen Namen erhalten dies geschieht 
 In Test befindet sich der iris.csv Datensatz sowie ein Script, welches zum testen der default Packete pandas numpy matplotlib ipykernel dient.
 Die Basis Struktur ist Data für sämtliche Input Daten. Output für Plots und Ergebnis Tabellen. Skripts für gespeicherte Skripte.
 Wichtig für die Versionkontrolle werden lediglich die Skripte und der Test Ordner gepushed
+Für requirement.txt sollte die Struktur wie folgt sein:
+pandas==2.2.1
+numpy==1.26.4
+matplotlib==3.8.3
+scikit-learn==1.4.1.post1
+requests==2.31.0
 
 English Version
 This is a standard Python container. The Dockerfile is located in the ‘docker’ subfolder. This folder is designed to quickly create a reproducible Python environment
@@ -19,3 +25,9 @@ Furthermore, the container should be given a specific name; this is done in `.de
 The `test` folder contains the `iris.csv` dataset and a script used to test the default packages: pandas, numpy, matplotlib and ipykernel.
 The basic structure is: ‘Data’ for all input data; ‘Output’ for plots and results tables; and ‘Scripts’ for saved scripts.
 For version control purposes, only the scripts and the ‘Test’ folder are pushed.
+The structure of requirement.txt should be as follows:
+pandas==2.2.1
+numpy==1.26.4
+matplotlib==3.8.3
+scikit-learn==1.4.1.post1
+requests==2.31.0
